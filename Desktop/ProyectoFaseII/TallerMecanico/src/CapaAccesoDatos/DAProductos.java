@@ -117,7 +117,7 @@ public class DAProductos {
         ResultSet rs = null;
         try {
             Statement stm = _cnn.createStatement();
-            String sentencia = "SELECT ID,IDEMPRESA,DESCRIPCION,PRECIOCOSTO,PRECIOVENTA,ESTADO,FECHA FROM CR_Producto";
+            String sentencia = "SELECT ID,IDEMPRESA,DESCRIPCION,PRECIOCOSTO,PRECIOVENTA,ESTADO,FECHA,Stock FROM CR_Producto";
             if (!condicion.equals("")) {
                 sentencia = String.format("%s WHERE %s", sentencia, condicion);
             }
@@ -139,7 +139,7 @@ public class DAProductos {
         List<EntidadProductos> lista = new ArrayList();
         try {
             Statement stm = _cnn.createStatement();
-            String sentencia = "SELECT ID,IDEMPRESA,DESCRIPCION,PRECIOCOSTO,PRECIOVENTA,ESTADO,FECHA FROM CR_Producto";
+            String sentencia = "SELECT ID,IDEMPRESA,DESCRIPCION,PRECIOCOSTO,PRECIOVENTA,FECHA,ESTADO,Stock FROM CR_Producto";
             if (!condicion.equals("")) {
                 sentencia = String.format("%s WHERE %s", sentencia, condicion);
             }
@@ -151,7 +151,8 @@ public class DAProductos {
                                              rs.getInt("PRECIOCOSTO"),
                                              rs.getInt("PRECIOVENTA"),
                                              rs.getDate("FECHA"), 
-                                             rs.getBoolean("ESTADO")
+                                             rs.getBoolean("ESTADO"),
+                                             rs.getFloat("Stock")
                 ));
             }
         } catch (Exception ex) {

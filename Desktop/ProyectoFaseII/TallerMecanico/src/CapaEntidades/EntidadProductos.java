@@ -24,6 +24,21 @@ public class EntidadProductos {
     private Date fecha;
     private Boolean estado; 
     private Boolean existe;
+    private Float stock;
+
+    public Float getStock() {
+        return stock;
+    }
+
+    public void setStock(Float stock) {
+        this.stock = stock;
+    }
+
+    public EntidadProductos(Float stock) {
+        this.stock = stock;
+    }
+    
+    
     
    
     
@@ -119,6 +134,17 @@ public class EntidadProductos {
         this.fecha = (Date) today.getTime();
         this.estado = false;
         this.existe = false;
+    }
+
+    public EntidadProductos(int id, int idEmpresa, String descripcion, int precioCosto, int precioVenta, Date fecha, Boolean estado, Float stock) {
+        this.id = id;
+        this.idEmpresa = idEmpresa;
+        this.descripcion = descripcion;
+        this.precioCosto = precioCosto;
+        this.precioVenta = precioVenta;
+        this.fecha = fecha;
+        this.estado = estado;
+        this.stock = stock;
     }
    
     

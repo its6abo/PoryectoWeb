@@ -6,6 +6,7 @@ package CapaEntidades;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -24,7 +25,15 @@ public class EntidadFacturaCompra {
     private Date fecha;
     private Boolean estado; 
     private Boolean existe=false;
-    
+     private List<EntidadDetalleFacturaCompra> listaDetalles;
+
+    public List<EntidadDetalleFacturaCompra> getListaDetalles() {
+        return listaDetalles;
+    }
+
+    public void setListaDetalles(List<EntidadDetalleFacturaCompra> listaDetalles) {
+        this.listaDetalles = listaDetalles;
+    }
     
     //Metodos Get y Set
 

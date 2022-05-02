@@ -44,7 +44,7 @@ public class DAVehiculos {
     //Insertar un vehiculo
     public int Insertar(EntidadVehiculos vehiculos) throws SQLException {
         int id = -1;
-        String sentencia = "INSERT INTO CR_Vehiculo(PLACA=?,IDTIPOVEHICULO=?,IDESTILO=?,IDMARCA=?,IDTIPOCOMBUSTIBLE=?,IDTIPOTRASMISION=?,ESTADO=?,) VALUES(?,?,?,?,?,?,?) ";
+        String sentencia = "INSERT INTO CR_Vehiculo(PLACA,IDTIPOVEHICULO,IDESTILO,IDMARCA,IDTIPOCOMBUSTIBLE,IDTIPOTRANSMISION) VALUES(?,?,?,?,?,?) ";
         try {
             PreparedStatement ps = _cnn.prepareStatement(sentencia, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, vehiculos.getPlaca());
@@ -52,8 +52,7 @@ public class DAVehiculos {
             ps.setInt(3, vehiculos.getIdEstilo());
             ps.setInt(4,vehiculos.getIdMarca());
             ps.setInt(5, vehiculos.getIdTipoCombustible());
-            ps.setInt(6, vehiculos.getIdTipoTrasmision());
-            ps.setBoolean(7, vehiculos.getEstado());
+            ps.setInt(6, vehiculos.getIdTipoTransmision());
             ps.execute();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs != null && rs.next()) {
@@ -71,20 +70,20 @@ public class DAVehiculos {
      //Modificar un vehiculo
         public int Modificar(EntidadVehiculos vehiculos) throws SQLException {
         int resultado = 0;
-        String sentencia = "UPDATE CR_Vehiculo SET ID=?,PLACA=?,IDTIPOVEHICULO=?,IDESTILO=?,IDMARCA=?,IDTIPOCOMBUSTIBLE=?,IDTIPOTRASMISION=?,ESTADO=?,WHERE ID=?";
+        String sentencia = "UPDATE CR_Vehiculo SET PLACA=?,IDTIPOVEHICULO=?,IDESTILO=?,IDMARCA=?,IDTIPOCOMBUSTIBLE=?,IDTIPOTRANSMISION=?,ESTADO=? WHERE ID=?";
         try {
             PreparedStatement ps = _cnn.prepareStatement(sentencia);
-            ps.setInt(1, vehiculos.getId());
-            ps.setString(2, vehiculos.getPlaca());
-            ps.setInt(3, vehiculos.getIdTipoVehiculo());
-            ps.setInt(4, vehiculos.getIdEstilo());
-            ps.setInt(5,vehiculos.getIdMarca());
-            ps.setInt(6, vehiculos.getIdTipoCombustible());
-            ps.setInt(7, vehiculos.getIdTipoTrasmision());
-            ps.setBoolean(8, vehiculos.getEstado());
+            ps.setString(1, vehiculos.getPlaca());
+            ps.setInt(2, vehiculos.getIdTipoVehiculo());
+            ps.setInt(3, vehiculos.getIdEstilo());
+            ps.setInt(4,vehiculos.getIdMarca());
+            ps.setInt(5, vehiculos.getIdTipoCombustible());
+            ps.setInt(6, vehiculos.getIdTipoTransmision());
+            ps.setBoolean(7, vehiculos.getEstado());
+            ps.setInt(8, vehiculos.getId());
             resultado = ps.executeUpdate();
             if (resultado > 0) {
-               mensaje = "Vehiculos modificado!"; 
+               mensaje = "Vehiculo modificado!"; 
             }
 
         } catch (Exception ex) {
@@ -122,7 +121,7 @@ public class DAVehiculos {
         ResultSet rs = null;
         try {
             Statement stm = _cnn.createStatement();
-            String sentencia = "SELECT ID=?,PLACA=?,IDTIPOVEHICULO=?,IDESTILO=?,IDMARCA=?,IDTIPOCOMBUSTIBLE=?,IDTIPOTRASMISION=?,ESTADO=? FROM CR_Vehiculo";
+            String sentencia = "SELECT ID=?,PLACA=?,IDTIPOVEHICULO=?,IDESTILO=?,IDMARCA=?,IDTIPOCOMBUSTIBLE=?,IDTIPOTRANSMISION=?,ESTADO=? FROM CR_Vehiculo";
             if (!condicion.equals("")) {
                 sentencia = String.format("%s WHERE %s", sentencia, condicion);
             }
@@ -174,7 +173,7 @@ public class DAVehiculos {
         EntidadVehiculos vehiculo = new EntidadVehiculos();
         try {
             Statement stm = _cnn.createStatement();
-            String sentencia = "SELECT ID=?,PLACA=?,IDTIPOVEHICULO=?,IDESTILO=?,IDMARCA=?,IDTIPOCOMBUSTIBLE=?,IDTIPOTRASMISION=?,ESTADO=? FROM CR_Vehiculo";
+            String sentencia = "SELECT ID,PLACA,IDTIPOVEHICULO,IDESTILO,IDMARCA,IDTIPOCOMBUSTIBLE,IDTIPOTRANSMISION,ESTADO FROM CR_Vehiculo";
             if (!condicion.equals("")) {
                 sentencia = String.format("%s WHERE %s", sentencia, condicion);
             }
@@ -186,7 +185,7 @@ public class DAVehiculos {
                 vehiculo.setIdEstilo(rs.getInt(4));
                 vehiculo.setIdMarca(rs.getInt(5));
                 vehiculo.setIdTipoCombustible(rs.getInt(6));
-                vehiculo.setIdTipoTrasmision(rs.getInt(7));
+                vehiculo.setIdTipoTransmision(rs.getInt(7));
                 vehiculo.setEstado(rs.getBoolean(8));
             }
 

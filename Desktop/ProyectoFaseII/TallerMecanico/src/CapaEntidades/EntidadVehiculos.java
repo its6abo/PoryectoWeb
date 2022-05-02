@@ -16,7 +16,7 @@ public class EntidadVehiculos {
     private int idEstilo;
     private int idMarca;
     private int idTipoCombustible;
-    private int idTipoTrasmision;
+    private int idTipoTransmision;
     private Boolean estado; 
     private Boolean existe;
     
@@ -71,12 +71,12 @@ public class EntidadVehiculos {
         this.idTipoCombustible = idTipoCombustible;
     }
 
-    public int getIdTipoTrasmision() {
-        return idTipoTrasmision;
+    public int getIdTipoTransmision() {
+        return idTipoTransmision;
     }
 
-    public void setIdTipoTrasmision(int idTipoTrasmision) {
-        this.idTipoTrasmision = idTipoTrasmision;
+    public void setIdTipoTransmision(int idTipoTrasmision) {
+        this.idTipoTransmision = idTipoTrasmision;
     }
 
     public Boolean getEstado() {
@@ -98,14 +98,14 @@ public class EntidadVehiculos {
     
     //Constructores
 
-    public EntidadVehiculos(int id, String placa, int idTipoVehiculo, int idEstilo, int idMarca, int idTipoCombustible, int idTipoTrasmision, Boolean estado) {
+    public EntidadVehiculos(int id, String placa, int idTipoVehiculo, int idEstilo, int idMarca, int idTipoCombustible, int idTipoTransmision, Boolean estado) {
         this.id = id;
         this.placa = placa;
         this.idTipoVehiculo = idTipoVehiculo;
         this.idEstilo = idEstilo;
         this.idMarca = idMarca;
         this.idTipoCombustible = idTipoCombustible;
-        this.idTipoTrasmision = idTipoTrasmision;
+        this.idTipoTransmision = idTipoTransmision;
         this.estado = estado;
     }
    
@@ -118,7 +118,7 @@ public class EntidadVehiculos {
         this.idEstilo = 0;
         this.idMarca = 0;
         this.idTipoCombustible = 0;
-        this.idTipoTrasmision = 0;
+        this.idTipoTransmision = 0;
         this.estado = false;
         this.existe=false;
     }

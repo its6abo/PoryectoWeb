@@ -305,6 +305,7 @@ DefaultTableModel modelo;
         modelo.addColumn("precioCosto");
         modelo.addColumn("precioVenta");
         modelo.addColumn("estado");
+        modelo.addColumn("stock");
     }
     
     //MÉTODO PARA MOSTRAR LA TABLA
@@ -312,7 +313,7 @@ DefaultTableModel modelo;
         BLProductos logica = new BLProductos();
         List<EntidadProductos> lista;
         LimpiarTabla();
-        Object[] fila = new Object[7];
+        Object[] fila = new Object[8];
         try {
             lista = logica.ListarProductos(condicion);
             for (EntidadProductos cli : lista) {
@@ -322,7 +323,9 @@ DefaultTableModel modelo;
                 fila[3] = cli.getPrecioCosto();
                 fila[4] = cli.getPrecioVenta();
                 fila[5] = cli.getEstado();
-                fila[6] = cli.getFecha();
+                fila[6] = cli.getStock();
+                fila[7] = cli.getFecha();
+                
                 modelo.addRow(fila);
             }
         } catch (Exception ex) {
@@ -399,6 +402,8 @@ DefaultTableModel modelo;
                 txtPrecioCosto.setText(tblProductos.getValueAt(fila, 3).toString());
                 txtPrecioVenta.setText(tblProductos.getValueAt(fila, 4).toString());
                 txtEstado.setText(tblProductos.getValueAt(fila, 5).toString());
+                
+                
 
 
                 condicion = String.format("estado = 1 and id=%s", txtId.getText());

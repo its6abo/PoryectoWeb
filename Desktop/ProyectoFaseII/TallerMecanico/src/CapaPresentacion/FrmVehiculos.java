@@ -326,129 +326,74 @@ DefaultTableModel modelo;
         EntidadVehiculos vehiculos = new EntidadVehiculos();
         if (!txtId.getText().equals("")) {
             vehiculos.setExiste(true);
-            vehiculos.setId(Integer.parseInt(txtId.getText()));
-        }
+            vehiculos.setId(Integer.parseInt(txtId.getText()));       }
                
                 vehiculos.setPlaca(txtPlaca.getText());
-                vehiculos.setEstado(Boolean.valueOf(txtEstado.getText()));
-              
-
-                
-                
-                
+                vehiculos.setEstado(Boolean.valueOf(txtEstado.getText()));                
                 
                 if(cbmTipoVehiculo.getSelectedItem().toString().equals("Automovil")){
-                vehiculos.setIdTipoVehiculo(1);
-           
-                
-                }
-                
+                vehiculos.setIdTipoVehiculo(1);       
+                }                
                 else if(cbmTipoVehiculo.getSelectedItem().toString().equals("Moto")){
-                vehiculos.setIdTipoVehiculo(2);
-           
-                
-                }
-                
+                vehiculos.setIdTipoVehiculo(2);  
+                }                
                 else if(cbmTipoVehiculo.getSelectedItem().toString().equals("Camión")){
                 vehiculos.setIdTipoVehiculo(3);
-           
-                
-                }
-                   
+                }                   
                 else if(cbmTipoVehiculo.getSelectedItem().toString().equals("Bus")){
-                vehiculos.setIdTipoVehiculo(4);
-           
-                
+                vehiculos.setIdTipoVehiculo(4);                
                 }
                 
-                else if(cbmIdEstilo.getSelectedItem().toString().equals("Hatchback")){
+                if(cbmIdEstilo.getSelectedItem().toString().equals("Hatchback")){
                 vehiculos.setIdEstilo(1);
-           
-                
-                }
-                
+                }                
                 else if(cbmIdEstilo.getSelectedItem().toString().equals("Sedán")){
-                vehiculos.setIdEstilo(2);
-           
-                
+                vehiculos.setIdEstilo(2);  
                 }
-
                 else if(cbmIdEstilo.getSelectedItem().toString().equals("Pick Up")){
-                vehiculos.setIdEstilo(3);
-           
-                
+                vehiculos.setIdEstilo(3);                
                 }
-
                 else if(cbmIdEstilo.getSelectedItem().toString().equals("Deportivo")){
-                vehiculos.setIdEstilo(4);
-           
+                vehiculos.setIdEstilo(4);    
+                }  
                 
-                }   
-                
-                
-                else if(cbmIdMarca.getSelectedItem().toString().equals("Toyota")){
-                vehiculos.setIdMarca(1);
-           
-                
-                }                  
- 
+                if(cbmIdMarca.getSelectedItem().toString().equals("Toyota")){
+                vehiculos.setIdMarca(1);                
+                }                   
                 else if(cbmIdMarca.getSelectedItem().toString().equals("Isuzu")){
-                vehiculos.setIdMarca(2);
-           
-                
-                }                      
-                
+                vehiculos.setIdMarca(2);                
+                }    
                 else if(cbmIdMarca.getSelectedItem().toString().equals("Mitsubishi")){
-                vehiculos.setIdMarca(3);
-           
-                
-                }      
-                
+                vehiculos.setIdMarca(3);    
+                }  
                 else if(cbmIdMarca.getSelectedItem().toString().equals("Honda")){
                 vehiculos.setIdMarca(4);
-           
-                
                 }                      
                 
-                else if(cbmIdTipoCombustible.getSelectedItem().toString().equals("Diesel")){
+                if(cbmIdTipoCombustible.getSelectedItem().toString().equals("Diesel")){
                 vehiculos.setIdTipoCombustible(1);
-                      
                 }  
-                
                  else if(cbmIdTipoCombustible.getSelectedItem().toString().equals("Gasolina")){
                 vehiculos.setIdTipoCombustible(2);
-                      
-                }                 
-                
+                }                                 
                 else if(cbmIdTipoCombustible.getSelectedItem().toString().equals("Gas")){
                 vehiculos.setIdTipoCombustible(3);
-                      
                 }  
-
                 else if(cbmIdTipoCombustible.getSelectedItem().toString().equals("Eléctrico")){
                 vehiculos.setIdTipoCombustible(4);
-                      
                 }  
 
-                else if(cbmIdTipoTransmision.getSelectedItem().toString().equals("Manual")){
-                vehiculos.setIdTipoTrasmision(1);
-                      
+                if(cbmIdTipoTransmision.getSelectedItem().toString().equals("Manual")){
+                vehiculos.setIdTipoTransmision(1);
                 }  
-                
                   else if(cbmIdTipoTransmision.getSelectedItem().toString().equals("Automática")){
-                vehiculos.setIdTipoTrasmision(2);
-                      
-                }                
-                
+                vehiculos.setIdTipoTransmision(2);
+                }               
                 else if(cbmIdTipoTransmision.getSelectedItem().toString().equals("Dual")){
-                vehiculos.setIdTipoTrasmision(3);
-                      
+                vehiculos.setIdTipoTransmision(3);
                 }                  
-
-
                 else if(cbmIdTipoTransmision.getSelectedItem().toString().equals("Tiptronic")){
-                vehiculos.setIdTipoTrasmision(4);
-                      
+                vehiculos.setIdTipoTransmision(4);
                 }  
 
                 
@@ -516,13 +461,13 @@ DefaultTableModel modelo;
                     int id = buscar.ObtenerId();
                     String condicion = "";
                     BLVehiculos logica = new BLVehiculos();
-                    EntidadVehiculos usuarios;
+                    EntidadVehiculos vehiculo;
                     if (id > -1) {
                         condicion = String.format("estado = 1 and Id=%d", id);
-                        usuarios = logica.ObtenerUnVehiculo(condicion);
-                        txtId.setText(String.valueOf(usuarios.getId()));
-                        txtPlaca.setText(usuarios.getPlaca());
-                        txtEstado.setText(String.valueOf(usuarios.getEstado()));
+                        vehiculo = logica.ObtenerUnVehiculo(condicion);
+                        txtId.setText(String.valueOf(vehiculo.getId()));
+                        txtPlaca.setText(vehiculo.getPlaca());
+                        txtEstado.setText(String.valueOf(vehiculo.getEstado()));
 
                     }
                     else{
@@ -610,7 +555,7 @@ DefaultTableModel modelo;
                 fila[3] = vehi.getIdEstilo();
                 fila[4] = vehi.getIdMarca();
                 fila[5] = vehi.getIdTipoCombustible();
-                fila[6] = vehi.getIdTipoTrasmision();
+                fila[6] = vehi.getIdTipoTransmision();
                 fila[7] = vehi.getEstado(); 
                 
                 modelo.addRow(fila);

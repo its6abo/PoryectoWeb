@@ -44,6 +44,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jFacturacion = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(6);
@@ -145,6 +146,14 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
         menu.add(jMenuItem5);
+
+        jMenuItem6.setText("Factura Compra");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        menu.add(jMenuItem6);
 
         jMenuBar1.add(menu);
 
@@ -339,6 +348,24 @@ public class FrmMenu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_mnuempresaMouseClicked
 
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+     FrmFacturaCompra frmemp;
+        try {
+            frmemp = new FrmFacturaCompra();
+            escritorio.add(frmemp);
+            //Centrar formulario
+            Dimension sizeContenedor = escritorio.getSize();
+            Dimension sizeFrm = frmemp.getSize();
+            frmemp.setLocation((((int) sizeContenedor.getWidth() - (int) sizeFrm.getWidth()) / 2),
+                ((int) sizeContenedor.getHeight() - (int) sizeFrm.getHeight()) / 2);
+            frmemp.show();
+
+        } catch (Exception ex) {
+            Logger.getLogger(FrmMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -384,6 +411,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenu menu;
     private javax.swing.JMenuItem mnuUsuarios;
     private javax.swing.JMenuItem mnuempresa;
